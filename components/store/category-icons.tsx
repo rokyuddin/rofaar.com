@@ -10,9 +10,9 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react"
-import { CATEGORY_ICON_LINKS } from "@/lib/store-catalog"
+import type { Category } from "@/lib/db/schema"
 
-const ICONS: Record<(typeof CATEGORY_ICON_LINKS)[number]["icon"], LucideIcon> = {
+const ICONS: Record<string, LucideIcon> = {
   gift: Gift,
   moon: Moon,
   package: Package,
@@ -23,23 +23,29 @@ const ICONS: Record<(typeof CATEGORY_ICON_LINKS)[number]["icon"], LucideIcon> = 
   "shopping-bag": ShoppingBag,
 }
 
-export function CategoryIcons() {
+interface CategoryIconsProps {
+  categories?: Category[]
+}
+
+export function CategoryIcons({ categories = [] }: CategoryIconsProps) {
+  if (categories.length === 0) return null
+
   return (
     <section className="mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div className="flex gap-5 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {CATEGORY_ICON_LINKS.map((item) => {
-          const Icon = ICONS[item.icon]
+        {categories.map((item) => {
+          const Icon = (item.icon && ICONS[item.icon]) ? ICONS[item.icon] : Gift
           return (
             <Link
-              key={item.label}
-              href={item.href}
-              className="group flex w-20 shrink-0 flex-col items-center gap-2 text-center"
+              key={item.id}
+              href={`/products?category=${encodeURIComponent(item.name)}`}
+              className="group flex w-24 shrink-0 flex-col items-center gap-2 text-center"
             >
-              <span className="flex size-16 items-center justify-center rounded-full border border-[#d6b36a]/50 bg-white text-[#a85d12] shadow-[0_1px_0_rgba(52,35,24,0.04)] transition-transform duration-300 group-hover:-translate-y-0.5">
+              <span className="flex size-16 items-center justify-center rounded-2xl border border-[#d6b36a]/40 bg-white text-[#a85d12] shadow-xs transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-md">
                 <Icon className="size-6 stroke-[1.5]" />
               </span>
-              <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground">
-                {item.label}
+              <span className="text-xs font-semibold text-[#342318] group-hover:text-primary">
+                {item.name}
               </span>
             </Link>
           )

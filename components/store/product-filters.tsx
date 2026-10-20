@@ -17,6 +17,7 @@ type Props = {
   maxPrice?: number
   priceFloor?: number
   priceCeil?: number
+  categories?: Array<{ name: string }>
 }
 
 export function ProductFilters({
@@ -26,6 +27,7 @@ export function ProductFilters({
   maxPrice,
   priceFloor = 0,
   priceCeil = 10000,
+  categories,
 }: Props) {
   const router = useRouter()
   const [range, setRange] = useState<[number, number]>([
@@ -71,7 +73,10 @@ export function ProductFilters({
           >
             All
           </Link>
-          {STORE_CATEGORIES.map((category) => (
+          {(categories && categories.length > 0
+            ? categories.map((c) => c.name)
+            : STORE_CATEGORIES
+          ).map((category) => (
             <Link
               key={category}
               href={buildHref({

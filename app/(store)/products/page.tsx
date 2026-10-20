@@ -4,6 +4,7 @@ import { ProductFilters } from "@/components/store/product-filters"
 import { db } from "@/lib/db"
 import { products } from "@/lib/db/schema"
 import { toNumber } from "@/lib/store-catalog"
+import { getActiveCategories } from "@/lib/site-data"
 
 type SearchParams = Promise<{
   q?: string
@@ -11,6 +12,8 @@ type SearchParams = Promise<{
   min?: string
   max?: string
 }>
+
+export const revalidate = 0
 
 export default async function ProductsPage({
   searchParams,
@@ -41,7 +44,7 @@ export default async function ProductsPage({
     conditions.push(lte(sql`CAST(${products.price} AS NUMERIC)`, max))
   }
 
-  const [rows, priceBounds] = await Promise.all([
+  const [rows, priceBounds, activeCategories] = await Promise.all([
     db
       .select()
       .from(products)
@@ -54,6 +57,7 @@ export default async function ProductsPage({
       })
       .from(products)
       .where(eq(products.isActive, true)),
+    getActiveCategories(),
   ])
 
   const floor = Math.floor(toNumber(priceBounds[0]?.minPrice ?? 0))
@@ -84,6 +88,7 @@ export default async function ProductsPage({
           maxPrice={max}
           priceFloor={floor}
           priceCeil={Math.max(ceil, floor + 100)}
+          categories={activeCategories}
         />
 
         {rows.length === 0 ? (
