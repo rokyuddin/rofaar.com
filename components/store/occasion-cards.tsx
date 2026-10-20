@@ -1,5 +1,5 @@
 import Link from "next/link"
-import type { OccasionCardItem } from "@/lib/site-data"
+import type { OccasionCardItem } from "@/lib/site-settings"
 
 interface OccasionCardsProps {
   cards?: OccasionCardItem[]

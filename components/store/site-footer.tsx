@@ -1,5 +1,5 @@
 import Link from "next/link"
-import type { FooterSettings } from "@/lib/site-data"
+import type { FooterSettings } from "@/lib/site-settings"
 
 interface SiteFooterProps {
   settings?: FooterSettings

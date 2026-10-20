@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { useCartStore } from "@/lib/cart-store"
 import { formatBdt } from "@/lib/format"
 
-import { DEFAULT_GENERAL, type GeneralSettings } from "@/lib/site-data"
+import { DEFAULT_GENERAL, type GeneralSettings } from "@/lib/site-settings"
 
 interface CartViewProps {
   settings?: GeneralSettings

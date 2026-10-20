@@ -8,7 +8,7 @@ import { ArrowRight, Search, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useCartStore } from "@/lib/cart-store"
-import type { HeaderSettings } from "@/lib/site-data"
+import type { HeaderSettings } from "@/lib/site-settings"
 import type { Category } from "@/lib/db/schema"
 import { cn } from "@/lib/utils"
 
