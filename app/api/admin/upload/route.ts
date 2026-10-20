@@ -30,7 +30,9 @@ export async function POST(req: Request) {
       .replace(/[^a-z0-9.-]+/g, "-")
       .replace(/^-|-$/g, "")
 
-    // 1. If Cloudflare R2 is configured, upload directly to Cloudflare
+    let cfErrorMessage: string | null = null
+
+    // 1. If Cloudflare R2 is configured, attempt upload directly to Cloudflare
     if (isCloudflareR2Configured()) {
       try {
         const publicUrl = await uploadToCloudflareR2({
@@ -47,15 +49,12 @@ export async function POST(req: Request) {
           size: file.size,
         })
       } catch (cfError: any) {
-        console.error("Cloudflare upload error:", cfError)
-        return NextResponse.json(
-          { error: `Cloudflare R2 upload failed: ${cfError.message}` },
-          { status: 500 }
-        )
+        console.error("Cloudflare upload error, falling back to local storage:", cfError)
+        cfErrorMessage = cfError?.message || "Cloudflare R2 upload failed"
       }
     }
 
-    // 2. Fallback to local public/uploads directory if Cloudflare env vars are pending
+    // 2. Fallback to local public/uploads directory if Cloudflare is not configured or failed
     const uploadsDir = path.join(process.cwd(), "public", "uploads")
     await fs.mkdir(uploadsDir, { recursive: true })
 
@@ -68,8 +67,9 @@ export async function POST(req: Request) {
       provider: "local",
       filename: uniqueFilename,
       size: file.size,
-      notice:
-        "Saved to local uploads. Add CLOUDFLARE_R2_* to .env.local to stream directly to Cloudflare CDN.",
+      notice: cfErrorMessage
+        ? `Saved to local uploads (${cfErrorMessage}).`
+        : "Saved to local uploads. Add CLOUDFLARE_R2_ACCESS_KEY_ID & CLOUDFLARE_R2_SECRET_ACCESS_KEY to .env.local to stream directly to Cloudflare CDN.",
     })
   } catch (err: any) {
     if (err?.message === "UNAUTHORIZED") {
