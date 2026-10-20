@@ -8,6 +8,7 @@ import {
   timestamp,
   boolean,
   varchar,
+  jsonb,
 } from "drizzle-orm/pg-core"
 
 export const orderStatusEnum = pgEnum("order_status", [
@@ -33,6 +34,57 @@ export const customers = pgTable("customers", {
   fullName: varchar("full_name", { length: 200 }).notNull(),
   phone: varchar("phone", { length: 40 }).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+})
+
+export const categories = pgTable("categories", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 100 }).notNull(),
+  slug: varchar("slug", { length: 120 }).notNull().unique(),
+  description: text("description").default(""),
+  icon: varchar("icon", { length: 60 }).default("gift"),
+  imageUrl: text("image_url"),
+  sortOrder: integer("sort_order").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+})
+
+export const banners = pgTable("banners", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  subtitle: text("subtitle").default(""),
+  badge: varchar("badge", { length: 80 }),
+  ctaText: varchar("cta_text", { length: 80 }).default("Shop Now"),
+  ctaLink: varchar("cta_link", { length: 255 }).default("/products"),
+  secondaryCtaText: varchar("secondary_cta_text", { length: 80 }),
+  secondaryCtaLink: varchar("secondary_cta_link", { length: 255 }),
+  imageUrl: text("image_url"),
+  bgGradient: varchar("bg_gradient", { length: 255 }).default(
+    "linear-gradient(160deg,#f7f0e4_0%,#efe0cc_45%,#e2c9a8_100%)"
+  ),
+  sortOrder: integer("sort_order").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+})
+
+export const pages = pgTable("pages", {
+  id: serial("id").primaryKey(),
+  slug: varchar("slug", { length: 120 }).notNull().unique(),
+  title: varchar("title", { length: 255 }).notNull(),
+  content: text("content").notNull(),
+  excerpt: text("excerpt").default(""),
+  metaTitle: varchar("meta_title", { length: 255 }),
+  metaDescription: text("meta_description"),
+  isPublished: boolean("is_published").notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+})
+
+export const siteSettings = pgTable("site_settings", {
+  key: varchar("key", { length: 80 }).primaryKey(),
+  value: jsonb("value").notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 })
 
@@ -97,6 +149,11 @@ export const orderItems = pgTable("order_items", {
 export type Admin = typeof admins.$inferSelect
 export type Customer = typeof customers.$inferSelect
 export type Product = typeof products.$inferSelect
+export type Category = typeof categories.$inferSelect
+export type Banner = typeof banners.$inferSelect
+export type Page = typeof pages.$inferSelect
+export type SiteSetting = typeof siteSettings.$inferSelect
 export type Order = typeof orders.$inferSelect
 export type OrderItem = typeof orderItems.$inferSelect
 export type OrderStatus = (typeof orderStatusEnum.enumValues)[number]
+
