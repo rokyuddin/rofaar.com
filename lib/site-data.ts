@@ -107,7 +107,7 @@ const DEFAULT_FOOTER: FooterSettings = {
   copyrightText: "© 2026 Rofaar. All rights reserved. Faith, Refined.",
 }
 
-const DEFAULT_GENERAL: GeneralSettings = {
+export const DEFAULT_GENERAL: GeneralSettings = {
   storeName: "Rofaar",
   storeTagline: "Faith, Refined.",
   currencySymbol: "৳",
@@ -209,4 +209,33 @@ export async function getPageBySlug(slug: string) {
     console.error("Error fetching page:", err)
     return null
   }
+}
+
+export interface OccasionCardItem {
+  title: string
+  href: string
+  tone?: string
+}
+
+export async function getOccasionCards(): Promise<OccasionCardItem[]> {
+  try {
+    const res = await db
+      .select()
+      .from(siteSettings)
+      .where(eq(siteSettings.key, "occasions"))
+      .limit(1)
+
+    if (res.length > 0 && Array.isArray(res[0].value)) {
+      return res[0].value as OccasionCardItem[]
+    }
+  } catch (err) {
+    console.error("Error fetching occasion cards:", err)
+  }
+  return [
+    { title: "Eid Gifts", href: "/products?q=eid", tone: "bg-[#f3d9c4]" },
+    { title: "Ramadan Specials", href: "/products?category=Prayer%20Essentials", tone: "bg-[#e8c9a8]" },
+    { title: "For Parents", href: "/products?category=Gift%20Combos", tone: "bg-[#dcc4a4]" },
+    { title: "Wedding Blessings", href: "/products?category=Hampers", tone: "bg-[#c9b18f]" },
+    { title: "Gratitude & Dua", href: "/products?category=Gift%20Combos", tone: "bg-[#b89a72]" },
+  ]
 }

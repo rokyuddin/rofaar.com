@@ -7,12 +7,21 @@ import { Button } from "@/components/ui/button"
 import { useCartStore } from "@/lib/cart-store"
 import { formatBdt } from "@/lib/format"
 
-export function CartView() {
+import { DEFAULT_GENERAL, type GeneralSettings } from "@/lib/site-data"
+
+interface CartViewProps {
+  settings?: GeneralSettings
+}
+
+export function CartView({ settings = DEFAULT_GENERAL }: CartViewProps) {
   const items = useCartStore((s) => s.items)
   const setQuantity = useCartStore((s) => s.setQuantity)
   const removeItem = useCartStore((s) => s.removeItem)
   const subtotal = useCartStore((s) => s.subtotal())
-  const shippingFee = subtotal > 0 && subtotal < 3000 ? 120 : 0
+  const freeThreshold = settings.freeShippingThreshold ?? 5000
+  const insideShipping = settings.insideDhakaShipping ?? 80
+  const isFree = subtotal >= freeThreshold
+  const shippingFee = subtotal > 0 ? (isFree ? 0 : insideShipping) : 0
   const total = subtotal + shippingFee
 
   if (items.length === 0) {
@@ -131,9 +140,10 @@ export function CartView() {
             <span>{formatBdt(total)}</span>
           </div>
         </div>
-        {subtotal > 0 && subtotal < 3000 ? (
+        {subtotal > 0 && !isFree ? (
           <p className="text-xs text-muted-foreground">
-            Free delivery on orders ৳3,000 and above.
+            Free delivery on orders {settings.currencySymbol ?? "৳"}
+            {freeThreshold.toLocaleString()} and above.
           </p>
         ) : null}
         <Button render={<Link href="/checkout" />} className="w-full">

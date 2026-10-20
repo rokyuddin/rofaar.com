@@ -9,6 +9,8 @@ import { formatBdt } from "@/lib/format"
 
 type Params = Promise<{ orderNumber: string }>
 
+export const revalidate = 0
+
 export default async function OrderConfirmationPage({
   params,
 }: {

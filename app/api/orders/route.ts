@@ -4,6 +4,7 @@ import { z } from "zod"
 import { db } from "@/lib/db"
 import { customers, orderItems, orders, products } from "@/lib/db/schema"
 import { generateOrderNumber } from "@/lib/orders"
+import { getGeneralSettings } from "@/lib/site-data"
 import { toNumber } from "@/lib/store-catalog"
 
 const orderSchema = z.object({
@@ -94,7 +95,15 @@ export async function POST(request: Request) {
     }
 
     const subtotal = lineItems.reduce((sum, line) => sum + line.lineTotal, 0)
-    const shippingFee = subtotal < 3000 ? 120 : 0
+    const generalSettings = await getGeneralSettings()
+    const isDhaka =
+      (data.shipping.city || "").toLowerCase().includes("dhaka") ||
+      (data.city || "").toLowerCase().includes("dhaka")
+    const baseShipping = isDhaka
+      ? generalSettings.insideDhakaShipping
+      : generalSettings.outsideDhakaShipping
+    const shippingFee =
+      subtotal >= generalSettings.freeShippingThreshold ? 0 : baseShipping
     const total = subtotal + shippingFee
     const orderNumber = generateOrderNumber()
 

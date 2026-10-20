@@ -7,21 +7,28 @@ import { ProductCard } from "@/components/store/product-card"
 import { Button } from "@/components/ui/button"
 import { db } from "@/lib/db"
 import { products } from "@/lib/db/schema"
-import { getActiveBanners, getActiveCategories, getPageBySlug } from "@/lib/site-data"
+import {
+  getActiveBanners,
+  getActiveCategories,
+  getOccasionCards,
+  getPageBySlug,
+} from "@/lib/site-data"
 
 export const revalidate = 0
 
 export default async function HomePage() {
-  const [bannersList, categoriesList, activeProducts, aboutPage] = await Promise.all([
-    getActiveBanners(),
-    getActiveCategories(),
-    db
-      .select()
-      .from(products)
-      .where(eq(products.isActive, true))
-      .orderBy(desc(products.featured), desc(products.createdAt)),
-    getPageBySlug("about-us"),
-  ])
+  const [bannersList, categoriesList, activeProducts, aboutPage, occasionsList] =
+    await Promise.all([
+      getActiveBanners(),
+      getActiveCategories(),
+      db
+        .select()
+        .from(products)
+        .where(eq(products.isActive, true))
+        .orderBy(desc(products.featured), desc(products.createdAt)),
+      getPageBySlug("about-us"),
+      getOccasionCards(),
+    ])
 
   const heroBanner = bannersList[0]
 
@@ -121,7 +128,7 @@ export default async function HomePage() {
       {/* Dynamic Categories */}
       <CategoryIcons categories={categoriesList} />
 
-      <OccasionCards />
+      <OccasionCards cards={occasionsList} />
 
       {/* Products Catalog Showcase */}
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 sm:px-6">

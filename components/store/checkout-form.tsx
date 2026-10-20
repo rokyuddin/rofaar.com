@@ -18,16 +18,32 @@ import { Textarea } from "@/components/ui/textarea"
 import { useCartStore } from "@/lib/cart-store"
 import { formatBdt } from "@/lib/format"
 
-export function CheckoutForm() {
+import { DEFAULT_GENERAL, type GeneralSettings } from "@/lib/site-data"
+
+interface CheckoutFormProps {
+  settings?: GeneralSettings
+}
+
+export function CheckoutForm({ settings = DEFAULT_GENERAL }: CheckoutFormProps) {
   const router = useRouter()
   const items = useCartStore((s) => s.items)
   const subtotal = useCartStore((s) => s.subtotal())
   const clear = useCartStore((s) => s.clear)
-  const shippingFee = subtotal > 0 && subtotal < 3000 ? 120 : 0
-  const total = subtotal + shippingFee
 
+  const [city, setCity] = useState("Dhaka")
   const [sameAsBilling, setSameAsBilling] = useState(true)
+  const [shippingCity, setShippingCity] = useState("")
   const [submitting, setSubmitting] = useState(false)
+
+  const effectiveCity = (sameAsBilling ? city : (shippingCity || city)).trim()
+  const isDhaka = effectiveCity ? effectiveCity.toLowerCase().includes("dhaka") : true
+  const baseShipping = isDhaka
+    ? (settings.insideDhakaShipping ?? 80)
+    : (settings.outsideDhakaShipping ?? 150)
+  const freeThreshold = settings.freeShippingThreshold ?? 5000
+  const isFree = subtotal >= freeThreshold
+  const shippingFee = subtotal > 0 ? (isFree ? 0 : baseShipping) : 0
+  const total = subtotal + (items.length > 0 ? shippingFee : 0)
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -155,7 +171,14 @@ export function CheckoutForm() {
             <div className="grid gap-5 sm:grid-cols-2">
               <Field>
                 <FieldLabel htmlFor="city">City</FieldLabel>
-                <Input id="city" name="city" required autoComplete="address-level2" />
+                <Input
+                  id="city"
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  autoComplete="address-level2"
+                />
               </Field>
               <Field>
                 <FieldLabel htmlFor="area">Area</FieldLabel>
@@ -203,7 +226,13 @@ export function CheckoutForm() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field>
                     <FieldLabel htmlFor="shippingCity">City</FieldLabel>
-                    <Input id="shippingCity" name="shippingCity" required />
+                    <Input
+                      id="shippingCity"
+                      name="shippingCity"
+                      value={shippingCity}
+                      onChange={(e) => setShippingCity(e.target.value)}
+                      required
+                    />
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="shippingArea">Area</FieldLabel>
@@ -253,9 +282,17 @@ export function CheckoutForm() {
             <span>{formatBdt(subtotal)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Shipping</span>
+            <span className="text-muted-foreground">
+              Shipping {isDhaka ? "(Inside Dhaka)" : "(Outside Dhaka)"}
+            </span>
             <span>{shippingFee === 0 ? "Free" : formatBdt(shippingFee)}</span>
           </div>
+          {subtotal > 0 && !isFree ? (
+            <p className="text-xs text-muted-foreground">
+              Free delivery on orders {settings.currencySymbol ?? "৳"}
+              {freeThreshold.toLocaleString()} and above.
+            </p>
+          ) : null}
           <div className="flex justify-between text-base font-semibold">
             <span>Total</span>
             <span>{formatBdt(total)}</span>

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
-import { STORE_CATEGORIES } from "@/lib/store-catalog"
 import { cn } from "@/lib/utils"
 
 type Props = {
@@ -73,10 +72,7 @@ export function ProductFilters({
           >
             All
           </Link>
-          {(categories && categories.length > 0
-            ? categories.map((c) => c.name)
-            : STORE_CATEGORIES
-          ).map((category) => (
+          {(categories ?? []).map((c) => c.name).map((category) => (
             <Link
               key={category}
               href={buildHref({
