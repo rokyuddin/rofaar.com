@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { ImageUpload } from "@/components/admin/image-upload"
 import type { Product } from "@/lib/db/schema"
 
 type ProductFormValues = {
@@ -201,15 +202,12 @@ export function ProductForm({ product }: { product?: Product }) {
             />
           </Field>
         </div>
-        <Field>
-          <FieldLabel htmlFor="imageUrl">Image URL</FieldLabel>
-          <Input
-            id="imageUrl"
-            required
-            value={values.imageUrl}
-            onChange={(e) => update("imageUrl", e.target.value)}
-          />
-        </Field>
+        <ImageUpload
+          value={values.imageUrl}
+          onChange={(url) => update("imageUrl", url)}
+          folder="products"
+          label="Product Photography"
+        />
         <div className="grid gap-4 sm:grid-cols-2">
           <Field>
             <FieldLabel htmlFor="category">Category</FieldLabel>
