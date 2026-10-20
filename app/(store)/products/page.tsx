@@ -13,7 +13,6 @@ type SearchParams = Promise<{
   max?: string
 }>
 
-export const revalidate = 0
 
 export default async function ProductsPage({
   searchParams,

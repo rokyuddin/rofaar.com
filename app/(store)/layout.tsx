@@ -6,7 +6,7 @@ import {
   getHeaderSettings,
 } from "@/lib/site-data"
 
-export const revalidate = 0 // Dynamic data from Neon
+// Dynamic data from Neon
 
 export default async function StoreLayout({
   children,

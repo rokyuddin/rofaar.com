@@ -14,7 +14,6 @@ import {
   getPageBySlug,
 } from "@/lib/site-data"
 
-export const revalidate = 0
 
 export default async function HomePage() {
   const [bannersList, categoriesList, activeProducts, aboutPage, occasionsList] =

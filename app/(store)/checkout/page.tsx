@@ -1,7 +1,6 @@
 import { CheckoutForm } from "@/components/store/checkout-form"
 import { getGeneralSettings } from "@/lib/site-data"
 
-export const revalidate = 0
 
 export default async function CheckoutPage() {
   const settings = await getGeneralSettings()

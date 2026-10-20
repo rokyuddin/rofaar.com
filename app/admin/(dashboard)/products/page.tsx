@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Products",
 }
 
-export const revalidate = 0
+
 
 export default async function AdminProductsPage() {
   const rows = await db.select().from(products).orderBy(desc(products.createdAt))

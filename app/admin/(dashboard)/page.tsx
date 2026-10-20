@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Admin Dashboard | Rofaar",
 }
 
-export const revalidate = 0
+
 
 export default async function AdminDashboardPage() {
   const [

@@ -19,7 +19,6 @@ import { discountPercent, toNumber } from "@/lib/store-catalog"
 
 type Params = Promise<{ slug: string }>
 
-export const revalidate = 0
 
 export default async function ProductDetailPage({
   params,
