@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Eid Family Hamper">
+  <rect width="400" height="400" fill="#F7F0E4"/>
+  <path d="M100 160h200l-20 140H120z" fill="#A85D12" opacity="0.18" stroke="#A85D12" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="90" y="140" width="220" height="28" rx="4" fill="#A85D12" opacity="0.35" stroke="#A85D12" stroke-width="2"/>
+  <path d="M200 100v170M160 120c20 20 60 20 80 0" fill="none" stroke="#342318" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="200" cy="250" r="14" fill="none" stroke="#A85D12" stroke-width="2"/>
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#342318">Eid Hamper</text>
+</svg>

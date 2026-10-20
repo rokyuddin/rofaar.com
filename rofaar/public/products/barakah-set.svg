@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gift of Barakah for Parents">
+  <rect width="400" height="400" fill="#F7F0E4"/>
+  <rect x="70" y="90" width="260" height="200" rx="10" fill="none" stroke="#A85D12" stroke-width="2"/>
+  <path d="M70 160h260" stroke="#A85D12" stroke-width="1.5"/>
+  <path d="M200 90v200" stroke="#A85D12" stroke-width="1.5"/>
+  <circle cx="200" cy="160" r="28" fill="#A85D12" opacity="0.2"/>
+  <path d="M200 140c8 12 8 28 0 40c-8-12-8-28 0-40z" fill="#A85D12"/>
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#342318">Barakah Set</text>
+</svg>
