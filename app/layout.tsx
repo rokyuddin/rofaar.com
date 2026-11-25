@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Cormorant_Garamond, Manrope } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -43,15 +43,27 @@ export const metadata: Metadata = {
     url: "/",
     title: "Rofaar — Faith, Refined.",
     description: SITE_DESCRIPTION,
-    images: [{ url: "/logo.jpg", alt: "Rofaar" }],
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rofaar — Thoughtful Islamic gifts for the people who mean the most",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rofaar — Faith, Refined.",
     description: SITE_DESCRIPTION,
-    images: ["/logo.jpg"],
+    images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },
+}
+
+// Rofaar Brown, from the brand guideline.
+export const viewport: Viewport = {
+  themeColor: "#95490d",
 }
 
 const organizationLd = {
@@ -62,7 +74,7 @@ const organizationLd = {
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: SITE_URL,
-      logo: `${SITE_URL}/logo.jpg`,
+      logo: `${SITE_URL}/brand/icon-512.png`,
       description: SITE_DESCRIPTION,
       areaServed: "BD",
     },

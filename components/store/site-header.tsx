@@ -77,9 +77,9 @@ export function SiteHeader({ settings, categories = [] }: SiteHeaderProps) {
         <div className="flex items-center gap-3 sm:gap-5">
           <Link href="/" className="shrink-0 flex items-center gap-2.5">
             <Image
-              src="/logo.jpg"
+              src="/brand/rofaar-mark.png"
               alt={settings?.logoText || "Rofaar"}
-              width={48}
+              width={38}
               height={56}
               className="h-11 w-auto object-contain"
               priority

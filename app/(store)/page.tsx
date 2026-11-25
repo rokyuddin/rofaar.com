@@ -61,9 +61,9 @@ export default async function HomePage() {
           <div className="flex flex-col gap-6 lg:col-span-7">
             <div className="flex items-center gap-4">
               <Image
-                src="/logo.jpg"
+                src="/brand/rofaar-mark.png"
                 alt="Rofaar"
-                width={72}
+                width={58}
                 height={84}
                 className="h-16 w-auto object-contain sm:h-20"
                 priority
