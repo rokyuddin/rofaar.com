@@ -10,6 +10,8 @@ export const revalidate = 3600
 // sets its canonical to itself. /about is a redirect to /pages/about-us, which
 // is listed with the CMS pages.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // If the database is unreachable (e.g. during a build), still return the
+  // static entries instead of failing; the next revalidation fills in the rest.
   const [productRows, pageRows] = await Promise.all([
     db
       .select({ slug: products.slug, updatedAt: products.updatedAt })
@@ -19,7 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .select({ slug: pages.slug, updatedAt: pages.updatedAt })
       .from(pages)
       .where(eq(pages.isPublished, true)),
-  ])
+  ]).catch((err) => {
+    console.error("sitemap: database query failed", err)
+    return [[], []] as const
+  })
 
   return [
     { url: SITE_URL, changeFrequency: "daily", priority: 1 },
