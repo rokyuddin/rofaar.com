@@ -3,6 +3,9 @@ import { Cormorant_Garamond, Manrope } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { ThemeProvider } from "@/components/theme-provider"
+import { GtmNoScript, GtmScript } from "@/components/analytics/gtm"
+import { JsonLd } from "@/components/analytics/json-ld"
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 import "./globals.css"
 
@@ -17,13 +20,65 @@ const fontSans = Manrope({
   variable: "--font-sans",
 })
 
+// No canonical here: it would make every page point to the home page.
+// Search Console / Meta domain verification is done via Cloudflare DNS TXT.
 export const metadata: Metadata = {
-  title: {
-    default: "Rofaar — Faith, Refined.",
-    template: "%s · Rofaar",
+  title: { default: "Rofaar — Faith, Refined.", template: "%s · Rofaar" },
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  keywords: [
+    "Islamic gifts Bangladesh",
+    "Islamic gift combo",
+    "gift for parents",
+    "prayer mat",
+    "tasbih",
+    "hampers",
+    "Rofaar",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    url: "/",
+    title: "Rofaar — Faith, Refined.",
+    description: SITE_DESCRIPTION,
+    images: [{ url: "/logo.jpg", alt: "Rofaar" }],
   },
-  description:
-    "Thoughtful Islamic gifts for the people who mean the most. Premium Parents’ Islamic Gift Combos for Bangladesh.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Rofaar — Faith, Refined.",
+    description: SITE_DESCRIPTION,
+    images: ["/logo.jpg"],
+  },
+  robots: { index: true, follow: true },
+}
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "OnlineStore",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.jpg`,
+      description: SITE_DESCRIPTION,
+      areaServed: "BD",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/products?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -37,7 +92,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(fontSans.variable, fontHeading.variable, "antialiased")}
     >
+      <head>
+        <GtmScript />
+      </head>
       <body>
+        <GtmNoScript />
+        <JsonLd data={organizationLd} />
         <ThemeProvider>
           <TooltipProvider>
             {children}

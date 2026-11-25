@@ -13,12 +13,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = await getPageBySlug(slug)
 
   if (!page) {
-    return { title: "Page Not Found | Rofaar" }
+    return { title: "Page not found" }
   }
 
   return {
-    title: page.metaTitle || `${page.title} | Rofaar`,
+    // The root layout's title template appends " · Rofaar"; a custom
+    // metaTitle from the CMS is used exactly as written.
+    title: page.metaTitle ? { absolute: page.metaTitle } : page.title,
     description: page.metaDescription || page.excerpt,
+    alternates: { canonical: `/pages/${slug}` },
   }
 }
 

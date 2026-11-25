@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
+import { trackEvent } from "@/lib/analytics"
 import { useCartStore } from "@/lib/cart-store"
 
 type Props = {
@@ -21,13 +22,29 @@ export function AddToCartButtons({ product, quantity = 1, className }: Props) {
   const router = useRouter()
   const addItem = useCartStore((s) => s.addItem)
 
+  function trackAdd() {
+    trackEvent("add_to_cart", {
+      value: product.price * quantity,
+      items: [
+        {
+          item_id: product.productId,
+          item_name: product.name,
+          price: product.price,
+          quantity,
+        },
+      ],
+    })
+  }
+
   function addToCart() {
     addItem(product, quantity)
+    trackAdd()
     toast.success("Added to cart")
   }
 
   function buyNow() {
     addItem(product, quantity)
+    trackAdd()
     router.push("/checkout")
   }
 

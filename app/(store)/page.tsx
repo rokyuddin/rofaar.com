@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { and, desc, eq } from "drizzle-orm"
@@ -14,6 +15,9 @@ import {
   getPageBySlug,
 } from "@/lib/site-data"
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 export default async function HomePage() {
   const [bannersList, categoriesList, activeProducts, aboutPage, occasionsList] =

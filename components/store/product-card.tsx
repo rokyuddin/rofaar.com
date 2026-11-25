@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { trackEvent } from "@/lib/analytics"
 import { useCartStore } from "@/lib/cart-store"
 import { formatBdt } from "@/lib/format"
 import { discountPercent, toNumber } from "@/lib/store-catalog"
@@ -39,13 +40,24 @@ export function ProductCard({ product }: { product: ProductCardData }) {
     }
   }
 
+  function trackAdd() {
+    trackEvent("add_to_cart", {
+      value: price,
+      items: [
+        { item_id: product.id, item_name: product.name, price, quantity: 1 },
+      ],
+    })
+  }
+
   function addToCart() {
     addItem(cartPayload())
+    trackAdd()
     toast.success("Added to cart")
   }
 
   function buyNow() {
     addItem(cartPayload())
+    trackAdd()
     router.push("/checkout")
   }
 

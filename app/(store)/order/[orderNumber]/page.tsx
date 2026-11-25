@@ -1,7 +1,9 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { eq } from "drizzle-orm"
+import { TrackEvent } from "@/components/analytics/track-event"
 import { Button } from "@/components/ui/button"
 import { db } from "@/lib/db"
 import { orderItems, orders } from "@/lib/db/schema"
@@ -9,6 +11,10 @@ import { formatBdt } from "@/lib/format"
 
 type Params = Promise<{ orderNumber: string }>
 
+export const metadata: Metadata = {
+  title: "Order confirmed",
+  robots: { index: false, follow: false },
+}
 
 export default async function OrderConfirmationPage({
   params,
@@ -33,6 +39,19 @@ export default async function OrderConfirmationPage({
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-12 sm:px-6">
+      <TrackEvent
+        event="purchase"
+        onceKey={`rofaar-purchase-${order.orderNumber}`}
+        transactionId={order.orderNumber}
+        value={Number(order.total)}
+        shipping={Number(order.shippingFee)}
+        items={items.map((item) => ({
+          item_id: item.productId ?? item.productName,
+          item_name: item.productName,
+          price: Number(item.unitPrice),
+          quantity: item.quantity,
+        }))}
+      />
       <div className="flex flex-col gap-3">
         <p className="text-xs font-semibold tracking-widest text-primary uppercase">
           Order confirmed

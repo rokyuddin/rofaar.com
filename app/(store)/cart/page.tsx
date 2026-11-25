@@ -1,5 +1,11 @@
+import type { Metadata } from "next"
 import { CartView } from "@/components/store/cart-view"
 import { getGeneralSettings } from "@/lib/site-data"
+
+export const metadata: Metadata = {
+  title: "Cart",
+  robots: { index: false, follow: false },
+}
 
 export default async function CartPage() {
   const settings = await getGeneralSettings()

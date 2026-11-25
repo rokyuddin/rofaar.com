@@ -1,6 +1,11 @@
+import type { Metadata } from "next"
 import { CheckoutForm } from "@/components/store/checkout-form"
 import { getGeneralSettings } from "@/lib/site-data"
 
+export const metadata: Metadata = {
+  title: "Checkout",
+  robots: { index: false, follow: false },
+}
 
 export default async function CheckoutPage() {
   const settings = await getGeneralSettings()

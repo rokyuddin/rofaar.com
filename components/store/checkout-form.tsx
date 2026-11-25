@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useRef, useState } from "react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { trackEvent } from "@/lib/analytics"
 import { useCartStore } from "@/lib/cart-store"
 import { formatBdt } from "@/lib/format"
 
@@ -44,6 +45,22 @@ export function CheckoutForm({ settings = DEFAULT_GENERAL }: CheckoutFormProps) 
   const isFree = subtotal >= freeThreshold
   const shippingFee = subtotal > 0 ? (isFree ? 0 : baseShipping) : 0
   const total = subtotal + (items.length > 0 ? shippingFee : 0)
+
+  // Fire once, after the persisted cart has hydrated with items.
+  const checkoutTracked = useRef(false)
+  useEffect(() => {
+    if (checkoutTracked.current || items.length === 0) return
+    checkoutTracked.current = true
+    trackEvent("begin_checkout", {
+      value: subtotal,
+      items: items.map((i) => ({
+        item_id: i.productId,
+        item_name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+      })),
+    })
+  }, [items, subtotal])
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()

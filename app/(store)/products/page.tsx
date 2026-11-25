@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { and, asc, eq, gte, ilike, lte, or, sql } from "drizzle-orm"
 import { ProductCard } from "@/components/store/product-card"
 import { ProductFilters } from "@/components/store/product-filters"
@@ -13,6 +14,10 @@ type SearchParams = Promise<{
   max?: string
 }>
 
+export const metadata: Metadata = {
+  title: "All Products",
+  alternates: { canonical: "/products" },
+}
 
 export default async function ProductsPage({
   searchParams,
