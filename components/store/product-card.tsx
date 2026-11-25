@@ -96,7 +96,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
             </span>
           ) : null}
           {off != null ? (
-            <span className="text-xs font-semibold tracking-wide text-emerald-700">
+            <span className="text-xs font-semibold tracking-wide text-primary">
               {off}% OFF
             </span>
           ) : null}

@@ -51,8 +51,8 @@ export const DEFAULT_HEADER: HeaderSettings = {
   announcementText:
     "✨ Free premium gift packaging & greeting card with every Parents' Combo • Nationwide Delivery",
   announcementLink: "/products?category=Gift%20Combos",
-  announcementBg: "#342318",
-  announcementTextColor: "#f7f0e4",
+  announcementBg: "#33180a",
+  announcementTextColor: "#fbf3e9",
   navLinks: [
     { label: "Gift Combos", href: "/products?category=Gift%20Combos", highlight: true },
     { label: "Prayer Essentials", href: "/products?category=Prayer%20Essentials" },
@@ -122,9 +122,9 @@ export const DEFAULT_GENERAL: GeneralSettings = {
 }
 
 export const DEFAULT_OCCASION_CARDS: OccasionCardItem[] = [
-  { title: "Eid Gifts", href: "/products?q=eid", tone: "bg-[#f3d9c4]" },
-  { title: "Ramadan Specials", href: "/products?category=Prayer%20Essentials", tone: "bg-[#e8c9a8]" },
-  { title: "For Parents", href: "/products?category=Gift%20Combos", tone: "bg-[#dcc4a4]" },
-  { title: "Wedding Blessings", href: "/products?category=Hampers", tone: "bg-[#c9b18f]" },
-  { title: "Gratitude & Dua", href: "/products?category=Gift%20Combos", tone: "bg-[#b89a72]" },
+  { title: "Eid Gifts", href: "/products?q=eid", tone: "bg-[#f5e1cf]" },
+  { title: "Ramadan Specials", href: "/products?category=Prayer%20Essentials", tone: "bg-[#d9b9a0]" },
+  { title: "For Parents", href: "/products?category=Gift%20Combos", tone: "bg-[#d9b9a0]" },
+  { title: "Wedding Blessings", href: "/products?category=Hampers", tone: "bg-[#c4936e]" },
+  { title: "Gratitude & Dua", href: "/products?category=Gift%20Combos", tone: "bg-[#ad6b3a]" },
 ]

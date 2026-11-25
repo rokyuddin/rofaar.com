@@ -188,7 +188,7 @@ export default async function ProductDetailPage({
               </span>
             ) : null}
             {off != null ? (
-              <span className="text-sm font-semibold text-emerald-700">
+              <span className="text-sm font-semibold text-primary">
                 {off}% OFF
               </span>
             ) : null}

@@ -216,7 +216,7 @@ async function main() {
       imageUrl:
         "https://pub-ece99fd7441a42429b3f439d5d1c4da2.r2.dev/products/the-parents-prayer-combo.jpg",
       bgGradient:
-        "linear-gradient(160deg,#f7f0e4_0%,#efe0cc_45%,#e2c9a8_100%)",
+        "linear-gradient(160deg,#fbf3e9_0%,#f5e1cf_45%,#d9b9a0_100%)",
       sortOrder: 1,
       isActive: true,
     },
