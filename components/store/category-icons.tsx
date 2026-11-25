@@ -41,10 +41,10 @@ export function CategoryIcons({ categories = [] }: CategoryIconsProps) {
               href={`/products?category=${encodeURIComponent(item.name)}`}
               className="group flex w-24 shrink-0 flex-col items-center gap-2 text-center"
             >
-              <span className="flex size-16 items-center justify-center rounded-2xl border border-[#d6b36a]/40 bg-white text-[#a85d12] shadow-xs transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-md">
+              <span className="flex size-16 items-center justify-center rounded-2xl border border-[#c4936e]/40 bg-white text-[#95490d] shadow-xs transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-md">
                 <Icon className="size-6 stroke-[1.5]" />
               </span>
-              <span className="text-xs font-semibold text-[#342318] group-hover:text-primary">
+              <span className="text-xs font-semibold text-[#33180a] group-hover:text-primary">
                 {item.name}
               </span>
             </Link>

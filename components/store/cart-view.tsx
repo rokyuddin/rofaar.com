@@ -27,7 +27,7 @@ export function CartView({ settings = DEFAULT_GENERAL }: CartViewProps) {
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-start gap-4 py-16">
-        <h1 className="font-heading text-4xl font-semibold text-[#342318]">
+        <h1 className="font-heading text-4xl font-semibold text-[#33180a]">
           Your cart is empty
         </h1>
         <p className="text-muted-foreground">
@@ -41,7 +41,7 @@ export function CartView({ settings = DEFAULT_GENERAL }: CartViewProps) {
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
       <div className="flex flex-col gap-6">
-        <h1 className="font-heading text-4xl font-semibold text-[#342318]">
+        <h1 className="font-heading text-4xl font-semibold text-[#33180a]">
           Cart
         </h1>
         <ul className="flex flex-col gap-6">
@@ -52,7 +52,7 @@ export function CartView({ settings = DEFAULT_GENERAL }: CartViewProps) {
             >
               <Link
                 href={`/products/${item.slug}`}
-                className="relative size-24 shrink-0 overflow-hidden bg-[#f3ebe0]"
+                className="relative size-24 shrink-0 overflow-hidden bg-[#f5ede6]"
               >
                 <Image
                   src={item.imageUrl}
@@ -67,7 +67,7 @@ export function CartView({ settings = DEFAULT_GENERAL }: CartViewProps) {
                   <div className="flex flex-col gap-1">
                     <Link
                       href={`/products/${item.slug}`}
-                      className="font-semibold text-[#342318] hover:text-primary"
+                      className="font-semibold text-[#33180a] hover:text-primary"
                     >
                       {item.name}
                     </Link>

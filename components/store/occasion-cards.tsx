@@ -6,11 +6,11 @@ interface OccasionCardsProps {
 }
 
 const DEFAULT_TONES = [
-  "bg-[#f3d9c4]",
-  "bg-[#e8c9a8]",
-  "bg-[#dcc4a4]",
-  "bg-[#c9b18f]",
-  "bg-[#b89a72]",
+  "bg-[#f5e1cf]",
+  "bg-[#d9b9a0]",
+  "bg-[#d9b9a0]",
+  "bg-[#c4936e]",
+  "bg-[#ad6b3a]",
 ]
 
 export function OccasionCards({ cards = [] }: OccasionCardsProps) {
@@ -18,7 +18,7 @@ export function OccasionCards({ cards = [] }: OccasionCardsProps) {
 
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 sm:px-6">
-      <h2 className="font-heading text-3xl font-semibold tracking-tight text-[#342318] sm:text-4xl">
+      <h2 className="font-heading text-3xl font-semibold tracking-tight text-[#33180a] sm:text-4xl">
         Gifts for every occasion
       </h2>
       <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -30,7 +30,7 @@ export function OccasionCards({ cards = [] }: OccasionCardsProps) {
               href={card.href}
               className={`relative flex h-40 w-56 shrink-0 flex-col justify-between overflow-hidden rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1 ${tone}`}
             >
-              <span className="text-lg font-semibold text-[#342318]">
+              <span className="text-lg font-semibold text-[#33180a]">
                 {card.title} <span aria-hidden>›</span>
               </span>
               <span
@@ -39,7 +39,7 @@ export function OccasionCards({ cards = [] }: OccasionCardsProps) {
               />
               <span
                 aria-hidden
-                className="pointer-events-none absolute right-6 bottom-4 size-16 rounded-full border border-[#342318]/15 bg-[#342318]/10"
+                className="pointer-events-none absolute right-6 bottom-4 size-16 rounded-full border border-[#33180a]/15 bg-[#33180a]/10"
               />
             </Link>
           )

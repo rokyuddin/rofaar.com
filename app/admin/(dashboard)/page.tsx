@@ -125,7 +125,7 @@ export default async function AdminDashboardPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-border/80 pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="font-heading text-3xl font-bold tracking-tight text-[#342318]">
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-[#33180a]">
               Dashboard
             </h1>
             <Badge variant="outline" className="text-xs bg-emerald-50 text-emerald-700 border-emerald-300">
@@ -167,7 +167,7 @@ export default async function AdminDashboardPage() {
               </span>
             </CardHeader>
             <CardContent>
-              <div className="font-heading text-2xl font-bold text-[#342318]">
+              <div className="font-heading text-2xl font-bold text-[#33180a]">
                 {s.value}
               </div>
               <p className="mt-1 text-[11px] text-muted-foreground font-medium">
@@ -197,7 +197,7 @@ export default async function AdminDashboardPage() {
                 <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>
               <div className="mt-4">
-                <h3 className="font-heading text-base font-semibold text-[#342318] group-hover:text-primary">
+                <h3 className="font-heading text-base font-semibold text-[#33180a] group-hover:text-primary">
                   {item.title}
                 </h3>
                 <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>

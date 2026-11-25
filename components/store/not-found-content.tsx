@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export function NotFoundContent() {
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-6 px-4 py-24 text-center sm:px-6">
+    <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-6 px-4 py-24 text-center sm:px-6">
       <Image
         src="/brand/rofaar-mark.png"
         alt=""

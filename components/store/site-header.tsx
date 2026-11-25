@@ -38,8 +38,8 @@ export function SiteHeader({ settings, categories = [] }: SiteHeaderProps) {
     settings?.announcementText ||
     "✨ Free premium gift packaging & greeting card with every Parents' Combo • Nationwide Delivery"
   const announcementLink = settings?.announcementLink || "/products?category=Gift%20Combos"
-  const announcementBg = settings?.announcementBg || "#342318"
-  const announcementTextColor = settings?.announcementTextColor || "#f7f0e4"
+  const announcementBg = settings?.announcementBg || "#33180a"
+  const announcementTextColor = settings?.announcementTextColor || "#fbf3e9"
 
   const navLinks = settings?.navLinks && settings.navLinks.length > 0
     ? settings.navLinks
@@ -52,7 +52,7 @@ export function SiteHeader({ settings, categories = [] }: SiteHeaderProps) {
       ]
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-[#fff8ef]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-[#fbf3e9]/95 backdrop-blur-md">
       {/* Dynamic Announcement Bar */}
       {announcementEnabled && announcementText && (
         <div
@@ -84,7 +84,7 @@ export function SiteHeader({ settings, categories = [] }: SiteHeaderProps) {
               className="h-11 w-auto object-contain"
               priority
             />
-            <span className="font-heading text-2xl font-bold tracking-tight text-[#342318] hidden sm:inline-block">
+            <span className="font-heading text-2xl font-bold tracking-tight text-[#33180a] hidden sm:inline-block">
               {settings?.logoText || "Rofaar"}
             </span>
           </Link>

@@ -54,10 +54,10 @@ export function AdminSidebar() {
       <SidebarHeader className="border-b border-border/70 px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/admin" className="flex flex-col">
-            <span className="font-heading text-xl font-bold tracking-tight text-[#342318]">
+            <span className="font-heading text-xl font-bold tracking-tight text-[#33180a]">
               Rofaar Admin
             </span>
-            <span className="text-[10px] font-semibold tracking-widest text-[#a85d12] uppercase">
+            <span className="text-[10px] font-semibold tracking-widest text-[#95490d] uppercase">
               Management Suite
             </span>
           </Link>

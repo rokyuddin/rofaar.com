@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-heading);
+    --font-heading: var(--font-sans);
     --font-sans: var(--font-sans);
     --font-mono: var(--font-mono);
     --color-sidebar-ring: var(--sidebar-ring);
@@ -49,73 +49,76 @@
 }
 
 :root {
-    /* Rofaar brand: Warm Ivory / Copper Brown / Deep Espresso */
-    --background: #f7f0e4;
-    --foreground: #242424;
+    /* Rofaar brand guideline: Rofaar Brown #95490d, Deep Espresso #33180a,
+       Taupe #9c8c7c, Charcoal #26221f, on cream #fbf3e9. Tints from the
+       guideline swatches. */
+    --background: #fbf3e9;
+    --foreground: #26221f;
     --card: #ffffff;
-    --card-foreground: #342318;
+    --card-foreground: #33180a;
     --popover: #ffffff;
-    --popover-foreground: #342318;
-    --primary: #a85d12;
-    --primary-foreground: #fff8ef;
-    --secondary: #e8ded0;
-    --secondary-foreground: #342318;
-    --muted: #e8ded0;
-    --muted-foreground: #5c4a3a;
-    --accent: #d6b36a;
-    --accent-foreground: #342318;
+    --popover-foreground: #33180a;
+    --primary: #95490d;
+    --primary-foreground: #fbf3e9;
+    --secondary: #ecdccf;
+    --secondary-foreground: #33180a;
+    --muted: #ecdccf;
+    --muted-foreground: #5c463b;
+    --accent: #f5e1cf;
+    --accent-foreground: #33180a;
     --destructive: oklch(0.577 0.245 27.325);
-    --border: #ddd0c0;
-    --input: #ddd0c0;
-    --ring: #a85d12;
-    --chart-1: #a85d12;
-    --chart-2: #d6b36a;
-    --chart-3: #77764a;
-    --chart-4: #342318;
-    --chart-5: #e8ded0;
+    --border: #ddd0c4;
+    --input: #ddd0c4;
+    --ring: #95490d;
+    --chart-1: #95490d;
+    --chart-2: #c4936e;
+    --chart-3: #9c8c7c;
+    --chart-4: #33180a;
+    --chart-5: #26221f;
     --radius: 0.625rem;
-    --sidebar: #fff8ef;
-    --sidebar-foreground: #342318;
-    --sidebar-primary: #a85d12;
-    --sidebar-primary-foreground: #fff8ef;
-    --sidebar-accent: #e8ded0;
-    --sidebar-accent-foreground: #342318;
-    --sidebar-border: #ddd0c0;
-    --sidebar-ring: #a85d12;
+    --sidebar: #fbf3e9;
+    --sidebar-foreground: #33180a;
+    --sidebar-primary: #95490d;
+    --sidebar-primary-foreground: #fbf3e9;
+    --sidebar-accent: #ecdccf;
+    --sidebar-accent-foreground: #33180a;
+    --sidebar-border: #ddd0c4;
+    --sidebar-ring: #95490d;
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.473 0.137 46.201);
-    --primary-foreground: oklch(0.987 0.022 95.277);
-    --secondary: oklch(0.274 0.006 286.033);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+    /* Guideline dark use: cream on Deep Espresso. */
+    --background: #33180a;
+    --foreground: #fbf3e9;
+    --card: #26221f;
+    --card-foreground: #fbf3e9;
+    --popover: #26221f;
+    --popover-foreground: #fbf3e9;
+    --primary: #c4936e;
+    --primary-foreground: #33180a;
+    --secondary: #5c463b;
+    --secondary-foreground: #fbf3e9;
+    --muted: #5c463b;
+    --muted-foreground: #ada39d;
+    --accent: #5c463b;
+    --accent-foreground: #fbf3e9;
     --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.879 0.169 91.605);
-    --chart-2: oklch(0.769 0.188 70.08);
-    --chart-3: oklch(0.666 0.179 58.318);
-    --chart-4: oklch(0.555 0.163 48.998);
-    --chart-5: oklch(0.473 0.137 46.201);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.769 0.188 70.08);
-    --sidebar-primary-foreground: oklch(0.279 0.077 45.635);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --border: rgb(251 243 233 / 12%);
+    --input: rgb(251 243 233 / 18%);
+    --ring: #c4936e;
+    --chart-1: #c4936e;
+    --chart-2: #d9b9a0;
+    --chart-3: #9c8c7c;
+    --chart-4: #ecdccf;
+    --chart-5: #ad6b3a;
+    --sidebar: #26221f;
+    --sidebar-foreground: #fbf3e9;
+    --sidebar-primary: #c4936e;
+    --sidebar-primary-foreground: #33180a;
+    --sidebar-accent: #5c463b;
+    --sidebar-accent-foreground: #fbf3e9;
+    --sidebar-border: rgb(251 243 233 / 12%);
+    --sidebar-ring: #c4936e;
 }
 
 @layer base {
@@ -126,7 +129,8 @@
     @apply bg-background font-sans text-foreground;
     }
   h1, h2, h3, h4, .font-heading {
-    font-family: var(--font-heading), ui-serif, Georgia, serif;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
     }
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;

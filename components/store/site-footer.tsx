@@ -49,15 +49,15 @@ export function SiteFooter({ settings }: SiteFooterProps) {
     `© ${new Date().getFullYear()} ${brandName}. All rights reserved. ${brandTagline}`
 
   return (
-    <footer className="mt-auto border-t border-border bg-[#fff8ef]">
+    <footer className="mt-auto border-t border-border bg-[#fbf3e9]">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         {/* Brand Column */}
         <div className="flex flex-col gap-3 md:col-span-1">
           <Link href="/" className="flex flex-col gap-0.5">
-            <span className="font-heading text-2xl font-bold tracking-tight text-[#342318]">
+            <span className="font-heading text-2xl font-bold tracking-tight text-[#33180a]">
               {brandName}
             </span>
-            <span className="text-xs font-semibold tracking-[0.2em] text-[#a85d12] uppercase">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[#95490d] uppercase">
               {brandTagline}
             </span>
           </Link>

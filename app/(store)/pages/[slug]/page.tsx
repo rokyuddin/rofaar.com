@@ -43,7 +43,7 @@ export default async function DynamicCmsPage({ params }: PageProps) {
         return (
           <h1
             key={idx}
-            className="font-heading text-4xl font-bold tracking-tight text-[#342318] sm:text-5xl mb-6"
+            className="font-heading text-4xl font-bold tracking-tight text-[#33180a] sm:text-5xl mb-6"
           >
             {trimmed.replace("# ", "")}
           </h1>
@@ -53,7 +53,7 @@ export default async function DynamicCmsPage({ params }: PageProps) {
         return (
           <h2
             key={idx}
-            className="font-heading text-2xl font-bold text-[#342318] sm:text-3xl mt-8 mb-4 border-b border-border/40 pb-2"
+            className="font-heading text-2xl font-bold text-[#33180a] sm:text-3xl mt-8 mb-4 border-b border-border/40 pb-2"
           >
             {trimmed.replace("## ", "")}
           </h2>
@@ -63,7 +63,7 @@ export default async function DynamicCmsPage({ params }: PageProps) {
         return (
           <h3
             key={idx}
-            className="font-heading text-xl font-semibold text-[#342318] mt-6 mb-3"
+            className="font-heading text-xl font-semibold text-[#33180a] mt-6 mb-3"
           >
             {trimmed.replace("### ", "")}
           </h3>
@@ -72,7 +72,7 @@ export default async function DynamicCmsPage({ params }: PageProps) {
       if (trimmed.startsWith("- ")) {
         const items = trimmed.split("\n").filter((l) => l.trim().startsWith("- "))
         return (
-          <ul key={idx} className="my-4 list-disc space-y-2 pl-6 text-[#5a4332]">
+          <ul key={idx} className="my-4 list-disc space-y-2 pl-6 text-[#5c463b]">
             {items.map((it, i) => (
               <li key={i}>{it.replace(/^- /, "")}</li>
             ))}
@@ -83,7 +83,7 @@ export default async function DynamicCmsPage({ params }: PageProps) {
       return (
         <p
           key={idx}
-          className="my-3 text-base sm:text-lg leading-relaxed text-[#5a4332]"
+          className="my-3 text-base sm:text-lg leading-relaxed text-[#5c463b]"
         >
           {trimmed}
         </p>

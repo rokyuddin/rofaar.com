@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Cormorant_Garamond, Manrope } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -9,13 +9,9 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 import "./globals.css"
 
-const fontHeading = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-heading",
-})
-
-const fontSans = Manrope({
+// Brand guideline typeface: Inter. Variable font, so Light through Bold
+// (300-700) are all available.
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 })
@@ -102,7 +98,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(fontSans.variable, fontHeading.variable, "antialiased")}
+      className={cn(fontSans.variable, "antialiased")}
     >
       <head>
         <GtmScript />

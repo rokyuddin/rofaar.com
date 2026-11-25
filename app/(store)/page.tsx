@@ -45,7 +45,7 @@ export default async function HomePage() {
           style={{
             background:
               heroBanner?.bgGradient ||
-              "radial-gradient(ellipse at 20% 20%, #fff8ef 0%, transparent 55%), radial-gradient(ellipse at 80% 10%, #e8c9a8 0%, transparent 45%), linear-gradient(160deg, #f7f0e4 0%, #efe0cc 45%, #e2c9a8 100%)",
+              "radial-gradient(ellipse at 20% 20%, #fbf3e9 0%, transparent 55%), radial-gradient(ellipse at 80% 10%, #d9b9a0 0%, transparent 45%), linear-gradient(160deg, #fbf3e9 0%, #f5e1cf 45%, #d9b9a0 100%)",
           }}
         />
         <div
@@ -69,20 +69,20 @@ export default async function HomePage() {
                 priority
               />
               <div className="flex flex-col gap-1">
-                <p className="font-heading text-4xl font-semibold tracking-tight text-[#342318] sm:text-5xl">
+                <p className="font-heading text-4xl font-semibold tracking-tight text-[#33180a] sm:text-5xl">
                   Rofaar
                 </p>
-                <p className="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#a85d12] uppercase">
+                <p className="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#95490d] uppercase">
                   {heroBanner?.badge || "Faith, Refined."}
                 </p>
               </div>
             </div>
 
-            <h1 className="font-heading text-4xl leading-[1.15] font-bold text-[#342318] sm:text-5xl lg:text-6xl">
+            <h1 className="font-heading text-4xl leading-[1.15] font-bold text-[#33180a] sm:text-5xl lg:text-6xl">
               {heroBanner?.title ||
                 "Thoughtful Islamic gifts for the people who mean the most"}
             </h1>
-            <p className="max-w-xl text-base leading-relaxed text-[#5a4332] sm:text-lg">
+            <p className="max-w-xl text-base leading-relaxed text-[#5c463b] sm:text-lg">
               {heroBanner?.subtitle ||
                 "Premium Parents’ Islamic Gift Combos and prayerful essentials, delivered across Bangladesh with quiet care."}
             </p>
@@ -103,7 +103,7 @@ export default async function HomePage() {
                   }
                   size="lg"
                   variant="outline"
-                  className="bg-white/40 border-[#342318]/20 text-[#342318] hover:bg-white"
+                  className="bg-white/40 border-[#33180a]/20 text-[#33180a] hover:bg-white"
                 >
                   {heroBanner.secondaryCtaText}
                 </Button>
@@ -140,7 +140,7 @@ export default async function HomePage() {
             <span className="text-xs font-bold tracking-widest text-primary uppercase">
               Curated Gift Sets
             </span>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-[#342318] sm:text-4xl">
+            <h2 className="font-heading text-3xl font-semibold tracking-tight text-[#33180a] sm:text-4xl">
               Exclusive Combos for Parents
             </h2>
           </div>
@@ -168,15 +168,15 @@ export default async function HomePage() {
       {/* Dynamic About Us Section */}
       {aboutPage && (
         <section className="mx-auto w-full max-w-7xl px-4 sm:px-6">
-          <div className="relative overflow-hidden rounded-3xl border border-[#d6b36a]/30 bg-gradient-to-br from-[#fff8ef] via-[#f9f1e4] to-[#f0dfcb] p-8 sm:p-12 lg:p-16">
+          <div className="relative overflow-hidden rounded-3xl border border-[#c4936e]/30 bg-gradient-to-br from-[#fbf3e9] via-[#f5ede6] to-[#f5ede6] p-8 sm:p-12 lg:p-16">
             <div className="max-w-2xl flex flex-col gap-5">
-              <span className="text-xs font-bold tracking-widest text-[#a85d12] uppercase">
+              <span className="text-xs font-bold tracking-widest text-[#95490d] uppercase">
                 Our Story & Commitment
               </span>
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-[#342318] sm:text-4xl">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[#33180a] sm:text-4xl">
                 {aboutPage.title}
               </h2>
-              <p className="text-base sm:text-lg leading-relaxed text-[#5a4332]">
+              <p className="text-base sm:text-lg leading-relaxed text-[#5c463b]">
                 {aboutPage.excerpt ||
                   "At ROFAAR, we curate complete, ready-to-gift prayer hampers and lifestyle essentials specifically designed for Mother and Father."}
               </p>
@@ -184,7 +184,7 @@ export default async function HomePage() {
                 <Button
                   render={<Link href="/pages/about-us" />}
                   variant="outline"
-                  className="border-[#342318]/30 font-semibold"
+                  className="border-[#33180a]/30 font-semibold"
                 >
                   Read our full story
                 </Button>

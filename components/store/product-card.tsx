@@ -64,7 +64,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
   return (
     <article className="group flex flex-col gap-3">
       <Link href={`/products/${product.slug}`} className="block overflow-hidden bg-white">
-        <div className="relative aspect-square overflow-hidden bg-[#f3ebe0]">
+        <div className="relative aspect-square overflow-hidden bg-[#f5ede6]">
           <Image
             src={product.imageUrl}
             alt={product.name}
@@ -81,7 +81,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
         ) : null}
 
         <Link href={`/products/${product.slug}`}>
-          <h3 className="text-sm font-semibold text-[#342318] transition-colors group-hover:text-primary">
+          <h3 className="text-sm font-semibold text-[#33180a] transition-colors group-hover:text-primary">
             {product.name}
           </h3>
         </Link>

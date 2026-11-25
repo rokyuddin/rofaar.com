@@ -17,8 +17,8 @@ export default function AdminNavigationPage() {
   const [announcementEnabled, setAnnouncementEnabled] = useState(true)
   const [announcementText, setAnnouncementText] = useState("")
   const [announcementLink, setAnnouncementLink] = useState("")
-  const [announcementBg, setAnnouncementBg] = useState("#342318")
-  const [announcementTextColor, setAnnouncementTextColor] = useState("#f7f0e4")
+  const [announcementBg, setAnnouncementBg] = useState("#33180a")
+  const [announcementTextColor, setAnnouncementTextColor] = useState("#fbf3e9")
   const [logoText, setLogoText] = useState("Rofaar")
   const [deliveryTagline, setDeliveryTagline] = useState("Delivering across Bangladesh")
   const [showSearch, setShowSearch] = useState(true)
@@ -35,8 +35,8 @@ export default function AdminNavigationPage() {
           setAnnouncementEnabled(data.announcementEnabled ?? true)
           setAnnouncementText(data.announcementText || "")
           setAnnouncementLink(data.announcementLink || "")
-          setAnnouncementBg(data.announcementBg || "#342318")
-          setAnnouncementTextColor(data.announcementTextColor || "#f7f0e4")
+          setAnnouncementBg(data.announcementBg || "#33180a")
+          setAnnouncementTextColor(data.announcementTextColor || "#fbf3e9")
           setLogoText(data.logoText || "Rofaar")
           setDeliveryTagline(data.deliveryTagline || "Delivering across Bangladesh")
           setShowSearch(data.showSearch !== false)
@@ -123,7 +123,7 @@ export default function AdminNavigationPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-heading text-3xl font-semibold tracking-wide text-[#342318]">
+          <h1 className="font-heading text-3xl font-semibold tracking-wide text-[#33180a]">
             Navbar & Navigation
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -171,8 +171,8 @@ export default function AdminNavigationPage() {
               {announcementLink && <ArrowRight className="inline ml-1 size-3" />}
             </div>
           )}
-          <div className="bg-[#fff8ef] px-6 py-4 flex items-center justify-between border-b border-border/60">
-            <span className="font-heading text-2xl font-bold text-[#342318]">
+          <div className="bg-[#fbf3e9] px-6 py-4 flex items-center justify-between border-b border-border/60">
+            <span className="font-heading text-2xl font-bold text-[#33180a]">
               {logoText || "Rofaar"}
             </span>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
@@ -184,11 +184,11 @@ export default function AdminNavigationPage() {
               )}
             </div>
           </div>
-          <div className="bg-[#fff8ef] px-6 py-2 flex gap-4 text-xs font-medium text-muted-foreground border-b border-border/40 overflow-x-auto">
+          <div className="bg-[#fbf3e9] px-6 py-2 flex gap-4 text-xs font-medium text-muted-foreground border-b border-border/40 overflow-x-auto">
             {navLinks.map((l, i) => (
               <span
                 key={i}
-                className={l.highlight ? "text-primary font-bold" : "text-[#342318]"}
+                className={l.highlight ? "text-primary font-bold" : "text-[#33180a]"}
               >
                 {l.label}
               </span>

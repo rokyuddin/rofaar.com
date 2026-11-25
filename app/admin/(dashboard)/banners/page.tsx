@@ -42,7 +42,7 @@ export default function AdminBannersPage() {
   const [secondaryCtaLink, setSecondaryCtaLink] = useState("/products")
   const [imageUrl, setImageUrl] = useState("/products/the-parents-prayer-combo.jpg")
   const [bgGradient, setBgGradient] = useState(
-    "linear-gradient(160deg,#f7f0e4_0%,#efe0cc_45%,#e2c9a8_100%)"
+    "linear-gradient(160deg,#fbf3e9_0%,#f5e1cf_45%,#d9b9a0_100%)"
   )
   const [sortOrder, setSortOrder] = useState(0)
   const [isActive, setIsActive] = useState(true)
@@ -77,7 +77,7 @@ export default function AdminBannersPage() {
     setSecondaryCtaText("Explore Catalog")
     setSecondaryCtaLink("/products")
     setImageUrl("/products/the-parents-prayer-combo.jpg")
-    setBgGradient("linear-gradient(160deg,#f7f0e4_0%,#efe0cc_45%,#e2c9a8_100%)")
+    setBgGradient("linear-gradient(160deg,#fbf3e9_0%,#f5e1cf_45%,#d9b9a0_100%)")
     setSortOrder(0)
     setIsActive(true)
     setEditingId(null)
@@ -96,7 +96,7 @@ export default function AdminBannersPage() {
     setImageUrl(item.imageUrl || "")
     setBgGradient(
       item.bgGradient ||
-        "linear-gradient(160deg,#f7f0e4_0%,#efe0cc_45%,#e2c9a8_100%)"
+        "linear-gradient(160deg,#fbf3e9_0%,#f5e1cf_45%,#d9b9a0_100%)"
     )
     setSortOrder(item.sortOrder)
     setIsActive(item.isActive)
@@ -181,7 +181,7 @@ export default function AdminBannersPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-heading text-3xl font-semibold tracking-wide text-[#342318]">
+          <h1 className="font-heading text-3xl font-semibold tracking-wide text-[#33180a]">
             Hero Banners
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -413,7 +413,7 @@ export default function AdminBannersPage() {
                       Order: {item.sortOrder}
                     </span>
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-[#342318]">
+                  <h3 className="font-heading text-xl font-bold text-[#33180a]">
                     {item.title}
                   </h3>
                   {item.subtitle && (

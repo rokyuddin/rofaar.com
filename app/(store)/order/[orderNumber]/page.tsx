@@ -56,7 +56,7 @@ export default async function OrderConfirmationPage({
         <p className="text-xs font-semibold tracking-widest text-primary uppercase">
           Order confirmed
         </p>
-        <h1 className="font-heading text-4xl font-semibold text-[#342318]">
+        <h1 className="font-heading text-4xl font-semibold text-[#33180a]">
           Thank you, {order.billingName}
         </h1>
         <p className="text-muted-foreground">
@@ -76,7 +76,7 @@ export default async function OrderConfirmationPage({
           {items.map((item) => (
             <li key={item.id} className="flex gap-4">
               {item.productImage ? (
-                <div className="relative size-16 shrink-0 overflow-hidden bg-[#f3ebe0]">
+                <div className="relative size-16 shrink-0 overflow-hidden bg-[#f5ede6]">
                   <Image
                     src={item.productImage}
                     alt={item.productName}

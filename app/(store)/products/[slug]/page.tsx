@@ -160,7 +160,7 @@ export default async function ProductDetailPage({
       </Breadcrumb>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden bg-[#f3ebe0]">
+        <div className="relative aspect-square overflow-hidden bg-[#f5ede6]">
           <Image
             src={product.imageUrl}
             alt={product.name}
@@ -175,7 +175,7 @@ export default async function ProductDetailPage({
           {product.badge ? (
             <Badge className="text-primary">{product.badge}</Badge>
           ) : null}
-          <h1 className="font-heading text-4xl font-semibold text-[#342318] sm:text-5xl">
+          <h1 className="font-heading text-4xl font-semibold text-[#33180a] sm:text-5xl">
             {product.name}
           </h1>
           <p className="text-sm text-muted-foreground">{product.category}</p>

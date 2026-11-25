@@ -134,7 +134,7 @@ export function CheckoutForm({ settings = DEFAULT_GENERAL }: CheckoutFormProps) 
   if (items.length === 0) {
     return (
       <div className="flex flex-col gap-4 py-16">
-        <h1 className="font-heading text-4xl font-semibold text-[#342318]">
+        <h1 className="font-heading text-4xl font-semibold text-[#33180a]">
           Checkout
         </h1>
         <p className="text-muted-foreground">
@@ -148,7 +148,7 @@ export function CheckoutForm({ settings = DEFAULT_GENERAL }: CheckoutFormProps) 
   return (
     <form onSubmit={onSubmit} className="grid gap-10 lg:grid-cols-[1fr_320px]">
       <div className="flex flex-col gap-8">
-        <h1 className="font-heading text-4xl font-semibold text-[#342318]">
+        <h1 className="font-heading text-4xl font-semibold text-[#33180a]">
           Checkout
         </h1>
 
